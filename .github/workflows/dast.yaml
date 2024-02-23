@@ -21,7 +21,7 @@ jobs:
       - name: Checkmarx DAST Github Action
         uses: Checkmarx/dast-github-action@v1.0.6
         env:
-          CX_APIKEY: ${{ secrets.AST_API_KEY }}
+          CX_APIKEY: ${{ secrets.CX_ONE_API_KEY_EU_PROD }}
         with:
           command: web
           config: dast-config/zap_config.yaml
