@@ -12,12 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     name: DAST on Prem Testing Action
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+#      - name: Checkout Code
+#        uses: actions/checkout@v3
       - name: Create Output folder
-        run: mkdir ${{ github.workspace }}/output_fold
+#        run: mkdir ${{ github.workspace }}/output_fold
+        run: mkdir output_fold
       - name: Change dir owner
-        run: sudo chown -R 1000:1000 ${{ github.workspace }}
+#        run: sudo chown -R 1000:1000 ${{ github.workspace }}
+        run: sudo chown -R 1000:1000 .
       - name: Checkmarx DAST Github Action
         uses: Checkmarx/dast-github-action@v1.0.6
         env:
@@ -31,7 +33,8 @@ jobs:
           base_url: https://eu.ast.checkmarx.net/
           verbose: true
           timeout: 100000
-          output: ${{ github.workspace }}/output_fold
+#          output: ${{ github.workspace }}/output_fold
+          output: output_fold
       - name: Change dir owner back to gh user
         if: always()
         run: sudo chown -R 1001:1001 ${{ github.workspace }}/output_fold  
