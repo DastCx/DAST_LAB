@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     name: DAST on Prem Testing Action
     steps:
-      - name: Create Output folder
       - name: Change dir owner
         run: sudo chown -R 1000:1000 ${{ github.workspace }}
       - name: Checkmarx DAST Github Action
