@@ -13,14 +13,14 @@ jobs:
     name: DAST on Prem Testing Action
     steps:
       - name: Change dir owner
-        run: sudo chown -R 1000:1000 ${{ github.workspace }}
+        run: sudo chown -R 1000:1000 .
       - name: Checkmarx DAST Github Action
         uses: Checkmarx/dast-github-action@v1.0.6
         env:
           CX_APIKEY: ${{ secrets.CX_ONE_API_KEY_EU_PROD }}
         with:
           command: web
-          config: ${{ github.workspace }}/dast-config/test_config.yaml
+          config: ./dast-config/test_config.yaml
           environment_id: 6d4c1982-181b-48b7-b4b2-b26e63965c72
           fail_on: "HIGH"
           log_level: info
