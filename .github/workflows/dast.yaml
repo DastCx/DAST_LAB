@@ -14,13 +14,15 @@ jobs:
     steps:
       - name: Change dir owner
         run: sudo chown -R 1000:1000 .
+      - name: List directory
+        run: ls -al .
       - name: Checkmarx DAST Github Action
         uses: Checkmarx/dast-github-action@main
         env:
           CX_APIKEY: ${{ secrets.CX_ONE_API_KEY_EU_PROD }}
         with:
           command: web
-          config: /dast-config/test_config.yaml
+          config: ./dast-config/test_config.yaml
           environment_id: 6d4c1982-181b-48b7-b4b2-b26e63965c72
           fail_on: "HIGH"
           log_level: info
