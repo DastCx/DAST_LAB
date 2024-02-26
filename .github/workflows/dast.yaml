@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     name: DAST on Prem Testing Action
     steps:
+       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: check_out 
+        uses: actions/checkout@v3
       - name: Change dir owner
         run: sudo chown -R 1000:1000 .
       - name: List directory
